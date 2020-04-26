@@ -184,7 +184,8 @@ function getMedia(){
         streamVideo.autoplay = true;
         streamVideo.width = hdW;
         streamVideo.height = hdH;
-        streamVideo.src = URL.createObjectURL(Webcam.stream);
+        // streamVideo.src = URL.createObjectURL(Webcam.stream);
+        streamVideo.srcObject = Webcam.stream;
         streamVideo.play();
         localStream = Webcam.stream;
         $('#fullscreenButton').prop('disabled', false);
@@ -464,6 +465,8 @@ function facialLdmkTrackingDisplay(){
       msg = statusMsg.toodark;
     }
   }
+
+  validldmk = true; //cga
   if(validldmk){
     $("#statusmsgP").html(statusMsg.clickrestart);
     if(DISPLAYON == false && DISPLAYDOTON == false && ABTEST == false){
@@ -713,6 +716,7 @@ function display(sequence){
   if(curposdisplay > 0 && sequence[curposdisplay].type != "point" && sequence[curposdisplay-1].type == "point"){
     onlineprediction();
   }
+
   switch(entry.type){
     case "point":
       var step = 30; // step size (ms)
@@ -802,6 +806,7 @@ function display(sequence){
       abtestStartTime = new Date().getTime();
       startabtest();
       checkabtest();
+      //cga
       setTimeout(function(){
         if(ABTEST == false){ // program has restarted
           return;
@@ -1151,7 +1156,8 @@ function VideoRecorder(mediaStream,width,height) {
     video.muted = true;
     video.volume = 0;
     video.autoplay = true;
-    video.src = URL.createObjectURL(mediaStream);
+    // video.src = URL.createObjectURL(mediaStream);
+    video.srcObject = mediaStream;
     video.play();
     var lastAnimationFrame = null;
     var lastFrameTime;

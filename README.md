@@ -3,6 +3,11 @@ TurkerGaze: Crowdsourcing Saliency with Webcam based Eye Tracking
 
 ### Instructions
 ```bash
+Ubuntu 18.04
+curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+sudo apt update
+sudo apt install nodejs
+
 > ./scripts/install.sh
 > npm install
 > npm start
